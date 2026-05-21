@@ -1,6 +1,6 @@
 {
   "name": "@cashudevkit/react-native",
-  "version": "0.16.5",
+  "version": "5.16.0",
   "description": "React Native Nitro bindings for Cashu Development Kit",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "bob build",
-    "codegen": "nitro-codegen",
+    "codegen": "nitrogen",
     "prepack": "bob build"
   },
   "keywords": [
@@ -35,7 +35,7 @@
     "react-native-nitro-modules": "*"
   },
   "devDependencies": {
-    "react-native-nitro-codegen": "^0.19.0",
+    "nitrogen": "^0.32.0",
     "react-native-builder-bob": "^0.30.0",
     "typescript": "^5.4.0"
   },
