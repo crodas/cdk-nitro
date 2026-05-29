@@ -1,6 +1,6 @@
 {
   "name": "@cashudevkit/react-native",
-  "version": "5.16.0",
+  "version": "6.16.0",
   "description": "React Native Nitro bindings for Cashu Development Kit",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
