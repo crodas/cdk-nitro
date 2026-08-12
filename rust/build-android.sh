@@ -22,9 +22,9 @@ cargo ndk \
 TARGET_DIR="$(cargo metadata --manifest-path "$SCRIPT_DIR/Cargo.toml" --format-version 1 | \
   python3 -c 'import sys,json; print(json.load(sys.stdin)["target_directory"])')"
 
-cp "$TARGET_DIR/aarch64-linux-android/release/libcdk_nitro.a" "$JNILIBS_DIR/arm64-v8a/"
-cp "$TARGET_DIR/armv7-linux-androideabi/release/libcdk_nitro.a" "$JNILIBS_DIR/armeabi-v7a/"
-cp "$TARGET_DIR/x86_64-linux-android/release/libcdk_nitro.a" "$JNILIBS_DIR/x86_64/"
+cp "$TARGET_DIR/aarch64-linux-android/release/libcdk_nitro.so" "$JNILIBS_DIR/arm64-v8a/"
+cp "$TARGET_DIR/armv7-linux-androideabi/release/libcdk_nitro.so" "$JNILIBS_DIR/armeabi-v7a/"
+cp "$TARGET_DIR/x86_64-linux-android/release/libcdk_nitro.so" "$JNILIBS_DIR/x86_64/"
 
 echo "Built Android native libraries:"
-ls -la "$JNILIBS_DIR"/*/libcdk_nitro.a
+ls -la "$JNILIBS_DIR"/*/libcdk_nitro.so

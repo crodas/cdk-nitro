@@ -58,15 +58,15 @@ const cdk_create_p2pk_blinded_message = lib.func(
   'CdkBlindResult *cdk_create_p2pk_blinded_message(' +
     'uint64_t amount, const char *keyset_id, const char *pubkey_hex, ' +
     'const char **additional_pubkeys, uint32_t additional_pubkeys_len, ' +
-    'uint64_t num_sigs, uint64_t locktime, ' +
+    'double num_sigs, double locktime, ' +
     'const char **refund_pubkeys, uint32_t refund_pubkeys_len, ' +
-    'const char *sig_flag)',
+    'double num_sigs_refund, const char *sig_flag)',
 );
 
 const cdk_create_deterministic_blinded_message = lib.func(
   'CdkBlindResult *cdk_create_deterministic_blinded_message(' +
     'uint64_t amount, const char *keyset_id, ' +
-    'const uint8_t *seed, uint32_t seed_len, uint32_t counter)',
+    'const uint8_t *seed, uint32_t seed_len, double counter)',
 );
 
 // ---------------------------------------------------------------------------
@@ -118,7 +118,7 @@ describe('cdk_create_p2pk_blinded_message', () => {
 
   it('returns non-null for a valid pubkey', () => {
     const ptr = cdk_create_p2pk_blinded_message(
-      1, KEYSET_ID, PUBKEY, null, 0, 1, 0, null, 0, 'SigInputs',
+      1, KEYSET_ID, PUBKEY, null, 0, 1, 0, null, 0, 0, 'SigInputs',
     );
     assert.ok(ptr, 'result should not be null');
     const res = decode(ptr);
@@ -128,7 +128,7 @@ describe('cdk_create_p2pk_blinded_message', () => {
 
   it('returns null for an invalid pubkey', () => {
     const ptr = cdk_create_p2pk_blinded_message(
-      1, KEYSET_ID, 'not-a-key', null, 0, 1, 0, null, 0, 'SigInputs',
+      1, KEYSET_ID, 'not-a-key', null, 0, 1, 0, null, 0, 0, 'SigInputs',
     );
     assert.equal(ptr, null, 'invalid pubkey should return null');
   });

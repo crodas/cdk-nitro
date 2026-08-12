@@ -4,7 +4,7 @@ import type { HybridObject } from 'react-native-nitro-modules';
  * Represents blinded output data returned from native crypto operations.
  */
 export interface OutputData {
-  /** Amount in satoshis */
+  /** Amount (denomination value in the keyset's unit) */
   amount: number;
   /** Keyset ID (hex string) */
   keysetId: string;
@@ -12,7 +12,7 @@ export interface OutputData {
   blindedSecret: string;
   /** Blinding factor / secret key used for blinding (hex) */
   blindingFactor: string;
-  /** The raw secret (hex) */
+  /** The raw secret string: hex for random/deterministic outputs, a NUT-10 JSON string for P2PK. */
   secret: string;
 }
 
@@ -38,6 +38,8 @@ export interface P2PKOptions {
   locktime?: number;
   /** Refund public keys */
   refundPubkeys?: string[];
+  /** Number of required refund signatures (default: 1) */
+  numSigsRefund?: number;
   /** Signature flag: 'SigInputs' | 'SigAll' */
   sigFlag?: string;
 }
@@ -48,7 +50,7 @@ export interface P2PKOptions {
  * Implements blinded message construction for the Cashu protocol,
  * backed by the CDK Rust library for consistent cross-platform crypto.
  */
-export interface HybridOutputDataCreator
+export interface OutputDataCreator
   extends HybridObject<{ ios: 'c++'; android: 'c++' }> {
   // --- Random outputs (ephemeral secrets) ---
 

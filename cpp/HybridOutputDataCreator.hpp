@@ -3,7 +3,7 @@
 #include "HybridOutputDataCreatorSpec.hpp"
 #include <memory>
 
-namespace cashudevkit {
+namespace margelo::nitro::cashudevkit {
 
 using namespace margelo::nitro;
 
@@ -47,12 +47,6 @@ public:
 
 private:
   static constexpr auto TAG = "OutputDataCreator";
-
-  // Helper: split amount into power-of-2 denominations based on keyset keys
-  std::vector<uint64_t> splitAmount(
-    uint64_t amount,
-    const std::vector<KeyEntry>& keys,
-    const std::optional<std::vector<double>>& customSplit);
 };
 
-} // namespace cashudevkit
+} // namespace margelo::nitro::cashudevkit
